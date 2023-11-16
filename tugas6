@@ -12,4 +12,4 @@ def line_equation_of(p1, M):
 
 # Menampilkan persamaan garis yang melalui titik (6, -2) dan bergradien -2
 print("Persamaan garis yang melalui titik (3,8) dan bergradien 3:")
-print(line_equation_of((3, 8), 3))
+print(line_equation_of((3, 8), 9))
