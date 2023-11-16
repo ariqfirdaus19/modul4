@@ -1,0 +1,42 @@
+import math
+
+# Fungsi untuk melakukan translasi dengan inner function
+def translate(tx, ty):
+    def translate_point(point):
+        x, y = point
+        translated_x = x + tx
+        translated_y = y + ty
+        return translated_x, translated_y
+    return translate_point
+
+# Fungsi untuk melakukan dilatasi dengan lambda function
+def scale(sx, sy):
+    return lambda point: (point[0] * sx, point[1] * sy)
+
+# Fungsi untuk melakukan rotasi dengan closure
+def rotate(angle):
+    def rotate_point(point):
+        x, y = point
+        radian_angle = math.radians(angle)
+        rotated_x = x * math.cos(radian_angle) - y * math.sin(radian_angle)
+        rotated_y = x * math.sin(radian_angle) + y * math.cos(radian_angle)
+        return rotated_x, rotated_y
+    return rotate_point
+
+# Contoh kasus
+point = (3, 5)
+
+# Translasi dengan tx = 2 dan ty = -1
+translate_function = translate(2, -1)
+translated_point = translate_function(point)
+print("Koordinat titik baru setelah translasi:", translated_point)
+
+# Dilatasi dengan sx = 2 dan sy = -1
+scale_function = scale(2, -1)
+scaled_point = scale_function(point)
+print("Koordinat titik baru setelah dilatasi:", scaled_point)
+
+# Rotasi dengan sudut = 30 derajat
+rotate_function = rotate(30)
+rotated_point = rotate_function(point)
+print("Koordinat titik baru setelah rotasi:", rotated_point)
